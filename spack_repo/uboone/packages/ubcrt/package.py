@@ -39,7 +39,6 @@ class Ubcrt(CMakePackage):
     depends_on("nusimdata", type=("build", "link", "run"))
     depends_on("root", type=("build", "link", "run"))
     depends_on("ubevt", type=("build", "link", "run"))
-    depends_on("ubobj", type=("build", "link", "run"))
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubcrt/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"

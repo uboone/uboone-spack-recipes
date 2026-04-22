@@ -40,7 +40,6 @@ class Ubraw(CMakePackage):
     depends_on("root", type=("build", "link", "run"))
     depends_on("sqlite", type=("build", "link", "run"))
     depends_on("ubcore", type=("build", "link", "run"))
-    depends_on("ubobj", type=("build", "link", "run"))
     depends_on("uboonedaq-datatypes", type=("build", "link", "run"))
 
     def url_for_version(self, version):

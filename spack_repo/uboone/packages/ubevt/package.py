@@ -42,7 +42,7 @@ class Ubevt(CMakePackage):
     depends_on("messagefacility", type=("build", "link", "run"))
     depends_on("nurandom", type=("build", "link", "run"))
     depends_on("root", type=("build", "link", "run"))
-    depends_on("ubobj", type=("build", "link", "run"))
+    depends_on("ubcore", type=("build", "link", "run"))
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubevt/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"

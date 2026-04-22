@@ -28,8 +28,7 @@ class Ubreco(CMakePackage):
     depends_on("larpandora", type=("build", "link", "run"))
     depends_on("nugen", type=("build", "link", "run"))
     depends_on("nutools", type=("build", "link", "run"))
-    depends_on("ubcore", type=("build", "link", "run"))
-    depends_on("ubevt", type=("build", "link", "run"))
+    depends_on("ubsim", type=("build", "link", "run"))
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubreco/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"

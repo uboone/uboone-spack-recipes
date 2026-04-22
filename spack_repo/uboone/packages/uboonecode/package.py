@@ -27,7 +27,9 @@ class Uboonecode(CMakePackage):
     depends_on("lardata", type=("build", "link", "run"))
     depends_on("nugen", type=("build", "link", "run"))
     depends_on("nurandom", type=("build", "link", "run"))
-    depends_on("ubobj", type=("build", "link", "run"))
+    depends_on("ubcrt", type=("build", "link", "run"))
+    depends_on("ubcv", type=("build", "link", "run"))
+    depends_on("ublite", type=("build", "link", "run"))
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/uboonecode/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"

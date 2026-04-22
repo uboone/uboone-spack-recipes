@@ -24,9 +24,7 @@ class Ublite(CMakePackage):
     depends_on("cetmodules", type="build")
 
     depends_on("larsim", type=("build", "link", "run"))
-    depends_on("ubcore", type=("build", "link", "run"))
-    depends_on("ubcv", type=("build", "link", "run"))
-    depends_on("ubevt", type=("build", "link", "run"))
+    depends_on("ubana", type=("build", "link", "run"))
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ublite/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"

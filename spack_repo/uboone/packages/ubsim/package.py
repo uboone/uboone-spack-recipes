@@ -45,7 +45,6 @@ class Ubsim(CMakePackage):
     depends_on("nutools", type=("build", "link", "run"))
     depends_on("ppfx", type=("build", "link", "run"))
     depends_on("root", type=("build", "link", "run"))
-    depends_on("ubcore", type=("build", "link", "run"))
     depends_on("ubevt", type=("build", "link", "run"))
 
     def url_for_version(self, version):

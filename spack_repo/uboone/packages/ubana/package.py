@@ -26,9 +26,8 @@ class Ubana(CMakePackage):
     depends_on("eigen", type=("build", "link", "run"))
     depends_on("larana", type=("build", "link", "run"))
     depends_on("larpandora", type=("build", "link", "run"))
-    depends_on("femulator", type=("build", "link", "run"))
     depends_on("ubcv", type=("build", "link", "run"))
-    depends_on("ubreco", type=("build", "link", "run"))
+    depends_on("ubraw", type=("build", "link", "run"))
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubana/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
