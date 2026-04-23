@@ -32,3 +32,8 @@ class Ubreco(CMakePackage):
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubreco/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+
+    def cmake_args(self):
+        args = ["-Dubreco_FW_DIR=fw"]
+        return args
+
