@@ -17,7 +17,7 @@ class Ubcrt(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="60f7c858a5d24964cebd6def29547fe8b8a2fd41d627cb5b0f2f219bd8cfc95a")
+    version("10.20.03", sha256="8c58c70bfbaaeb5c6ccfb19b2fa085acccaa67426ef22e39b230988b56fec8a4")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")

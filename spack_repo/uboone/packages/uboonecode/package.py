@@ -17,7 +17,7 @@ class Uboonecode(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="8941ddb191c5e3895a283e5f4f729cbbb07d3a7eb053ef13e1e24b16228c6cea")
+    version("10.20.03", sha256="3623e6e1213c91c6126d526337697d2d05982fe7a99185215bedb19102147a28")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")

@@ -11,13 +11,13 @@ class Ubreco(CMakePackage):
     """MicroBooNE reconstruction modules."""
 
     homepage = "https://github.com/uboone/ubreco"
-    url = "https://github.com/uboone/ubreco/archive/refs/tags/v10_20_05.tar.gz"
+    url = "https://github.com/uboone/ubreco/archive/refs/tags/v10_20_03.tar.gz"
     git = "https://github.com/uboone/ubreco.git"
 
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="b27408373a425582cae082ab43a1a66e343a8dc95ef188689935c002581e6366")
+    version("10.20.03", sha256="dbec8ed66aa9fcbe0121da70711b0274ed29b7207434476e5c6d3bc49fd3f01a")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")

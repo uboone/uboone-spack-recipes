@@ -17,7 +17,7 @@ class Ubsim(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="07eed80f5e28b44decc30a402300a2f6af8d4328a36335ef2c89208dfc3201d3")
+    version("10.20.02", sha256="0f154f080d4bf296096eeda2f0e89cb81b2ce34728d1567257b505af85bccb55")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")

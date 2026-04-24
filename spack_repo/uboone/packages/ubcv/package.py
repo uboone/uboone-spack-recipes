@@ -17,7 +17,7 @@ class Ubcv(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="eed26a67ae6586f555d47ffad2710176c844c4532c1ef5af4ca4b98a2a3f2920")
+    version("10.20.03", sha256="0b940fd144a3109a0c012e63311718e89968f14a8818cf7d6f3b5d800b50cb5d")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")

@@ -17,7 +17,7 @@ class Ublite(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="626676fc396a3c97717374a2cec1de7de6a501f9a1ad7564e0e72c2228cf8b86")
+    version("10.20.03", sha256="1cb8acd6a866651793059b255592d598b78cb7ab4960a7b7cc4ea9baceec76e9")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")

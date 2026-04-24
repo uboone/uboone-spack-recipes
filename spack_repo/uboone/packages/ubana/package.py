@@ -17,7 +17,7 @@ class Ubana(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
-    version("10.20.05", sha256="019e329075b3c8d5616cf3ce1d84ff663a4441ed42240066459612c2dd655e6e")
+    version("10.20.03", sha256="9522cf3b23dc77972730c4b5d06af820ef7b0bd588599a918ee0429ec4f4ac05")
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cxx", type="build")
