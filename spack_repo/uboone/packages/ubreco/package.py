@@ -51,7 +51,7 @@ class Ubreco(CMakePackage):
     def cmake_args(self):
         args = [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
-            "-Dubreco_FW_DIR=fw",
+            self.define("ubreco_FW_DIR", "scripts"),
             self.define("CMAKE_MODULE_PATH", "%s/Modules;%s/Modules" %
                        (self.spec['nufinder'].prefix, self.spec['larfinder'].prefix)),
         ] 
