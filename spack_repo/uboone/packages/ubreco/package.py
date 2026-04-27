@@ -40,6 +40,14 @@ class Ubreco(CMakePackage):
         description="Use the specified C++ standard when building.",
     )
 
+    def patch(self):
+        files = [ "ubreco/DetectorSystematics/WireModifier_module.cc",
+                "ubreco/MichelReco/Algo/PhotonFinder.cxx",
+                "ubreco/MichelReco/Fmwk/ClusterVectorCalculator.cxx",
+                "ubreco/MichelReco/Algo/ConeHitFinder.cxx"
+                ]
+        filter_file("isnan", "std::isnan", *files)
+
     def cmake_args(self):
         args = [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
