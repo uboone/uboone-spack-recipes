@@ -36,7 +36,9 @@ class Ubdl(MakefilePackage):
     depends_on("larcv", type=("build", "link", "run"))
 
     def build(self, spec, prefix):
-        make()
+        set_executable('%s/buildall_fnal.sh')
+        build_script = Executable('%s/buildall_fnal.sh')
+        build_script()
 
     def install(self, spec, prefix):
         install_tree(self.stage.source_path, prefix)
