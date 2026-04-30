@@ -6,6 +6,7 @@ from spack_repo.builtin.build_systems.makefile import MakefilePackage
 
 from spack.package import *
 
+from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 class Larlite(MakefilePackage):
     """LArLite event data format and lightweight analysis framework."""
@@ -24,6 +25,21 @@ class Larlite(MakefilePackage):
     depends_on("python", type=("build", "run"))
     depends_on("root", type=("build", "link", "run"))
 
+    variant(
+        "cxxstd",
+        default="17",
+        values=("14", "17", "20"),
+        multi=False,
+        description="Use the specified C++ standard when building.",
+    )
+
+    @cmake_preset
+    def cmake_args(self):
+        args = [
+            self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
+        ] 
+        return args
+
     phases = ("build", "install")
 
     def setup_build_environment(self, env):
@@ -36,13 +52,14 @@ class Larlite(MakefilePackage):
         env.set("USER_MODULE", "")
 
         env.set("LARLITE_CXX", self.compiler.cxx)
-        env.set("LARLITE_CXXSTDFLAG", "-std=c++11")
+        env.set("LARLITE_CXXSTDFLAG", "-std=c++%s" % self.spec["root"].variants["cxxstd"].value)
         env.set("LARLITE_ROOT6", "1")
         env.set("ROOTSYS", self.spec["root"].prefix)
 
         env.prepend_path("PATH", self.spec["root"].prefix.bin)
         env.prepend_path("PATH", self.spec["python"].prefix.bin)
         env.prepend_path("PYTHONPATH", self.spec["root"].prefix.lib)
+        env.prepend_path("PATH", join_path(self.stage.source_path, "bin"))
 
         mkdirp(join_path(base, "lib"))
 
