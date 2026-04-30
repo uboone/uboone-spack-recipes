@@ -24,6 +24,13 @@ class Larcv(MakefilePackage):
     depends_on("python", type=("build", "run"))
     depends_on("root", type=("build", "link", "run"))
     depends_on("boost", type=("build", "link", "run"))
+    depends_on("eigen", type=("build", "link", "run"))
+    depends_on("opencv", type=("build", "link", "run"))
+    depends_on("py-torch", type=("build", "run"))
+    depends_on("py-numpy", type=("build", "run"))
+    depends_on("py-scipy", type=("build", "run"))
+    depends_on("py-pyyaml", type=("build", "run"))
+    depends_on("py-pyzmq", type=("build", "run"))
 
     phases = ("build", "install")
 
