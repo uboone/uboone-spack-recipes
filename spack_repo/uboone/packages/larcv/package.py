@@ -71,7 +71,7 @@ class Larcv(Package):
         configure()
         with working_dir(join_path(self.stage.source_path, 'build')):
             cmake = Executable('cmake')
-            cmake('-DUSE_PYTHON3=ON' '../')
+            cmake('-DUSE_PYTHON3=ON', '%s' % self.stage.source_path )
             make()
 
     def install(self, spec, prefix):
