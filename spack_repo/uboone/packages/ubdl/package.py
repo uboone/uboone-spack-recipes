@@ -37,7 +37,7 @@ class Ubdl(MakefilePackage):
 
     def build(self, spec, prefix):
         set_executable('%s/buildall_fnal.sh')
-        build_script = Executable('%s/buildall_fnal.sh')
+        build_script = Executable('%s/buildall_fnal.sh' % self.stage.source_path)
         build_script()
 
     def install(self, spec, prefix):
