@@ -7,7 +7,7 @@ from spack_repo.builtin.build_systems.cmake import CMakePackage
 from spack.package import *
 
 
-class Geo2d(CMakePackage):
+class Geo2d(Package):
     """2D geometry and ROOT dictionary utilities used by LArCV/UBDL."""
 
     homepage = "https://github.com/LArbys/Geo2D"
@@ -16,9 +16,9 @@ class Geo2d(CMakePackage):
     license("UNKNOWN")
 
     version("master", branch="master")
-    version("2.me.06.03.prod.01", commit="ff2a2d13d7fa19d1a50d0a9b81df091095a92305")
+    version("2.me.06.03.prod.01", commit="642470be0694396c6eb000892c368fa0e592bb68")
 
-    depends_on("cmake@3.10:", type="build")
+    depends_on("gmake", type="build")
     depends_on("c", type="build")
     depends_on("cxx", type="build")
     depends_on("root", type=("build", "link", "run"))
@@ -26,10 +26,35 @@ class Geo2d(CMakePackage):
     depends_on("python@3:", type=("build", "link", "run"))
     depends_on("py-numpy", type=("build", "run"))
 
-    def cmake_args(self):
-        args = [
-            self.define("USE_PYTHON3", True),
-            self.define("USE_PYTHON2", False),
-            self.define("GIT_SUBMODULE", False),
-        ]
-        return args
+    phases = ("build", "install")
+
+
+    def setup_build_environment(self, env):
+        env.set("GEO2D_BASEDIR", self.stage.source_path)
+        env.set("GEO2D_INCDIR", self.stage.source_path)
+        env.set("GEO2D_LIBDIR", join_path(self.stage.source_path, "lib"))
+        env.set("GEO2D_BINDIR", join_path(self.stage.source_path, "bin"))
+        env.set("GEO2D_COREDIR", join_path(self.stage.source_path, "Geo2D", "core"))
+
+        env.set("GEO2D_CXX", self.compiler.cxx)
+        env.set("GEO2D_ROOT6", "1")
+        env.set("GEO2D_PYTHON_VERSION", "3")
+        env.set("GEO2D_PYTHON", "python3")
+
+        env.set("OPENCV_INCDIR", join_path(self.spec["opencv"].prefix.include, "opencv4")
+        env.set("OPENCV_LIBDIR", self.spec["opencv"].prefix.lib)
+
+        env.prepend_path("PATH", self.spec["root"].prefix.bin)
+        env.prepend_path("PATH", self.spec["python"].prefix.bin)
+
+        mkdirp(join_path(self.stage.source_path, "build", "lib"))
+        mkdirp(join_path(self.stage.source_path, "build", "bin"))
+        mkdirp(join_path(self.stage.source_path, "build", "include"))
+        env.prepend_path("PATH", join_path(self.stage.source_path, "bin"))
+
+    def build(self, spec, prefix):
+        with working_dir(join_path(self.stage.source_path, 'build')):
+            make()
+
+    def install(self, spec, prefix):
+        install_tree(self.stage.source_path, prefix)
