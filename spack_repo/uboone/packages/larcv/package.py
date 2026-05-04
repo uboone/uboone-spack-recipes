@@ -74,14 +74,14 @@ class Larcv(Package):
         env.prepend_path("PATH", join_path(self.stage.source_path, "bin"))
         import os
         if os.path.exists(self.spec["py-torch"].prefix.lib64):
-            spack_env.set("LIBTORCH_DIR", join_path(
+            env.set("LIBTORCH_DIR", join_path(
                     self.spec["py-torch"].prefix.lib64,
                     "python%s/site-packages/torch"
                     % self.spec["python"].version.up_to(2),
                 )
             )
         else:
-            spack_env.set("LIBTORCH_DIR", join_path(
+            env.set("LIBTORCH_DIR", join_path(
                     self.spec["py-torch"].prefix.lib,
                     "python%s/site-packages/torch"
                     % self.spec["python"].version.up_to(2),
