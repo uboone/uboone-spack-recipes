@@ -70,6 +70,9 @@ class Larlite(Package):
         env.set("LARLITE_LIBDIR", join_path(self.prefix, "lib"))
         env.set("LARLITE_COREDIR", join_path(self.prefix, "core"))
         env.set("LARLITE_USERDEVDIR", join_path(self.prefix, "UserDev"))
+    
+        env.set("LARLITE_INCDIR", join_path(self.prefix, "build", "installed", "include"))
+        env.set("LARLITE_LIBDIR", join_path(self.prefix, "build", "installed", "lib"))
 
         env.prepend_path("PATH", join_path(self.prefix, "bin"))
         env.prepend_path("LD_LIBRARY_PATH", join_path(self.prefix, "lib"))
