@@ -58,7 +58,7 @@ class Larlite(Package):
         mkdirp(join_path(self.stage.source_path, "build"))
         with working_dir(join_path(self.stage.source_path, 'build')):
             cmake = Executable('cmake')
-            cmake('-DUSE_PYTHON3=ON', '../' )
+            cmake('-DUSE_PYTHON3=ON', '-DCMAKE_INSTALL_PREFIX=%s' % prefix, '../' )
             make()
             make('install')
 
