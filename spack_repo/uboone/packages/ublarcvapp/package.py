@@ -25,6 +25,7 @@ class Ublarcvapp(CMakePackage):
     depends_on("root", type=("build", "link", "run"))
     depends_on("larcv", type=("build", "link", "run"))
     depends_on("larlite", type=("build", "link", "run"))
+    depends_on("laropencv", type=("build", "link", "run"))
     depends_on("geo2d", type=("build", "link", "run"))
     depends_on("opencv", type=("build", "link", "run"))
     depends_on("eigen", type=("build", "link", "run"))
@@ -50,7 +51,7 @@ class Ublarcvapp(CMakePackage):
         env.set("OPENCV_LIBDIR", self.spec["opencv"].prefix.lib)
 
         # LArOpenCV libraries are produced in larlite; ublarcvapp expects these names.
-        env.set("LAROPENCV_BASEDIR", larlite_prefix)
+        env.set("LAROPENCV_BASEDIR", self.spec["laropencv"].prefix)
 
         env.set("CILANTRO_LIB_DIR", join_path(self.spec["cilantro"].prefix, "lib", "cmake", "cilantro"))
 
