@@ -54,7 +54,7 @@ class Larlite(Package):
         mkdirp(join_path(base, "lib"))
 
     def build(self, spec, prefix):
-        cmake= spec["cmake"].command.path + "/cmake"
+        cmake= Executable("cmake")
         cmake("-DUSE_PYTHON3:BOOL=ON", "-S", self.stage.source_path, "-B", join_path(self.stage.source_path, "build"))
         make()
 
