@@ -55,8 +55,11 @@ class Larlite(Package):
 
     def build(self, spec, prefix):
         cmake= Executable("cmake")
-        cmake("-DUSE_PYTHON3:BOOL=ON", "-S", self.stage.source_path, "-B", join_path(self.stage.source_path, "build"))
-        make()
+        with working_dir(join_path(self.stage.source_path, 'build')):
+            cmake = Executable('cmake')
+            cmake('-DUSE_PYTHON3=ON', '%s' % self.stage.source_path )
+            make()
+            make('install')
 
     def install(self, spec, prefix):
         install_tree(self.stage.source_path, prefix)
