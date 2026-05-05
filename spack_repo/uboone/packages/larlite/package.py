@@ -4,13 +4,13 @@
 
 import os
 
-from spack_repo.builtin.build_systems.makefile import MakefilePackage
+from spack_repo.builtin.build_systems.makefile import Package
 
 from spack.package import *
 
 from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
-class Larlite(MakefilePackage):
+class Larlite(Package):
     """LArLite event data format and lightweight analysis framework."""
 
     homepage = "https://github.com/NuTufts/larlite"
@@ -24,6 +24,7 @@ class Larlite(MakefilePackage):
 
     depends_on("c", type="build")
     depends_on("cxx", type="build")
+    depends_on("cmake", type="build")
     depends_on("gmake", type="build")
     depends_on("python", type=("build", "run"))
     depends_on("root", type=("build", "link", "run"))
@@ -53,9 +54,8 @@ class Larlite(MakefilePackage):
         mkdirp(join_path(base, "lib"))
 
     def build(self, spec, prefix):
-        python = spec["python"].command
-        python(join_path(self.stage.source_path, "config", "python", "gen_usermakefile.py"))
-        python(join_path(self.stage.source_path, "config", "python", "gen_topmakefile.py"))
+        cmake= spec["cmake"].command.path + "/cmake"
+        cmake("-DUSE_PYTHON3:BOOL=ON", "-S", self.stage.source_path, "-B", join_path(self.stage.source_path, "build"))
         make()
 
     def install(self, spec, prefix):
