@@ -78,18 +78,18 @@ class Larcv(Package):
                     "python%s/site-packages/torch"
                     % self.spec["python"].version.up_to(2))
                 )
-            env.prepend_path("CMAKE_PREFIX_PATH",
-                "{0}/lib/python{1}/site-packages/torch".format(
-                self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)))
         else:
             env.set("LIBTORCH_DIR", join_path(
                     self.spec["py-torch"].prefix.lib,
                     "python%s/site-packages/torch"
                     % self.spec["python"].version.up_to(2))
                 )
-            env.prepend_path("CMAKE_PREFIX_PATH",
-                "{0}/lib/python{1}/site-packages/torch".format(
-                self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)))
+        env.prepend_path("CMAKE_PREFIX_PATH",
+            "{0}/lib/python{1}/site-packages/torch".format(
+            self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)))
+        env.prepend_path("CMAKE_PREFIX_PATH",
+            "{0}/lib/python{1}/site-packages/torch".format(
+            self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)))
 
     def build(self, spec, prefix):
         set_executable(join_path(self.stage.source_path, 'configure.sh'))
