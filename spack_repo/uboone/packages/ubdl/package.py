@@ -32,8 +32,8 @@ class Ubdl(MakefilePackage):
     depends_on("py-scipy", type=("build", "run"))
     depends_on("py-pyyaml", type=("build", "run"))
     depends_on("py-pyzmq", type=("build", "run"))
-    depends_on("larlite@v2_me_06_03b", type=("build", "link", "run"))
-    depends_on("larcv@v2_me_06_03b", type=("build", "link", "run"))
+    depends_on("larlite@2.me.06.03.prod.01", type=("build", "link", "run"))
+    depends_on("larcv@2.me.06.03.prod.01", type=("build", "link", "run"))
 
     def build(self, spec, prefix):
         set_executable('%s/buildall_fnal.sh' % self.stage.source_path)

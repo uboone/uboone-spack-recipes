@@ -20,7 +20,7 @@ class Larlite(MakefilePackage):
     license("UNKNOWN")
 
     version("trunk", branch="trunk")
-    version("v2_me_06_03b", commit="ef74d541a09ba10bfe1fef6a0973b7270fef5dd9")
+    version("2.me.06.03.prod.01", commit="ef74d541a09ba10bfe1fef6a0973b7270fef5dd9")
 
     depends_on("c", type="build")
     depends_on("cxx", type="build")
