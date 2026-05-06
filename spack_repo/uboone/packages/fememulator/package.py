@@ -2,13 +2,13 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+import os
+
 from spack_repo.builtin.build_systems.cmake import CMakePackage
 
 from spack.package import *
 
-from spack_repo.fnal_art.packages.fnal_github_package.package import *
-
-class Fememulator(CMakePackage):
+class Fememulator(Package):
     """MicroBooNE FEM-based beam trigger emulator and software trigger algorithms."""
 
     homepage = "https://github.com/uboone/fememulator"
@@ -23,21 +23,32 @@ class Fememulator(CMakePackage):
     depends_on("cmake@2.8:", type="build")
     depends_on("c", type="build")
     depends_on("cxx", type="build")
+    depends_on("root", type=("build", "link", "run"))
+    depends_on("boost", type=("build", "link", "run"))
+    depends_on("larlite", type=("build", "link", "run"))
 
-    variant(
-        "cxxstd",
-        default="17",
-        values=("14", "17", "20"),
-        multi=False,
-        description="Use the specified C++ standard when building.",
-    )
+    phases = ("build", "install") 
 
-    @cmake_preset
-    def cmake_args(self):
-        args = [
-            self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
-        ] 
-        return args
+    def setup_build_environment(self, env):
+        env.set("SWTRIGGER_BUILDDIR", join_path(self.stage.source_path, "build"))
+        env.set("SWTRIGGER_INCDIR", self.stage.source_path)
+        env.set("SWTRIGGER_LIBDIR", join_path(self.stage.source_path, "build", "lib"))
+        env.set("SWTRIGGER_CXX", os.path.basename(self.compiler.cxx))
+        env.set("SWTRIGGER_ROOT6", "1")
+
+    def build(self, spec, prefix):
+        set_executable(join_path(self.stage.source_path, 'configure.sh'))
+        configure = Executable('%s/configure.sh' % self.stage.source_path)
+        configure()
+        mkdirp(join_path(self.stage.source_path, 'build'))
+        with working_dir(join_path(self.stage.source_path, 'build')):
+            cmake = Executable('cmake')
+            cmake('-DCMAKE_INSTALL_PREFIX=%s/build' % prefix, '../' )
+            make()
+
+
+    def install(self, spec, prefix):
+        install_tree(self.stage.source_path, prefix)
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/fememulator/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
