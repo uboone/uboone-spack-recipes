@@ -109,12 +109,12 @@ class Larcv(Package):
         env.set("LARCV_BUILDDIR", join_path(self.prefix, "build"))
         env.set("LARCV_COREDIR", join_path(self.prefix, "core"))
         env.set("LARCV_APPDIR", join_path(self.prefix, "app"))
-        env.set("LARCV_LIBDIR", join_path(self.prefix, "build", "lib"))
-        env.set("LARCV_INCDIR", join_path(self.prefix, "build", "include"))
-        env.set("LARCV_BINDIR", join_path(self.prefix, "build", "bin"))
+        env.set("LARCV_LIBDIR", join_path(self.prefix, "build", "installed", "lib"))
+        env.set("LARCV_INCDIR", join_path(self.prefix, "build", "installed", "include"))
+        env.set("LARCV_BINDIR", join_path(self.prefix, "build", "installed", "bin"))
 
         env.prepend_path("PATH", join_path(self.prefix, "bin"))
-        env.prepend_path("PATH", join_path(self.prefix, "build", "bin"))
+        env.prepend_path("PATH", join_path(self.prefix, "build", "installed", "bin"))
         env.prepend_path("PYTHONPATH", join_path(self.prefix, "python"))
-        env.prepend_path("LD_LIBRARY_PATH", join_path(self.prefix, "build", "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", join_path(self.prefix, "build", "installed", "lib"))
 
