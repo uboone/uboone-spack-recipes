@@ -23,3 +23,7 @@ class Uboonedata(CMakePackage):
     def cmake_args(self):
         args = [] 
         return args
+
+    def url_for_version(self, version):
+        return f"https://github.com/uboone/ubooonedata/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+
