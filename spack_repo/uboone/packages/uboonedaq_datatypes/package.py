@@ -1,11 +1,6 @@
-# Copyright Spack Project Developers. See COPYRIGHT file for details.
-#
-# SPDX-License-Identifier: (Apache-2.0 OR MIT)
-
+import sys, os
 from spack_repo.builtin.build_systems.cmake import CMakePackage
-
 from spack.package import *
-
 from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 class UboonedaqDatatypes(CMakePackage, FnalGithubPackage):
@@ -54,9 +49,11 @@ class UboonedaqDatatypes(CMakePackage, FnalGithubPackage):
         return args
 
     def setup_run_environment(self, env):
-        env.set("UBOONEDAQ_DATATYPES_BASEDIR", self.prefix)
-        env.set("UBOONEDAQ_DATATYPES_INCDIR", join_path(self.prefix, "include"))
-        env.set("UBOONEDAQ_DATATYPES_LIBDIR", join_path(self.prefix, "lib"))
+        print("Setting up uboonedaq_datatypes run environment.", file=sys.stderr)
+
+        env.prepend_path("PATH", os.path.join(self.prefix, "bin"))
+        env.set("UBOONEDAQ_DATATYPES_INC", os.path.join(self.prefix, "include"))
+        env.set("UBOONEDAQ_DATATYPES_LIB", os.path.join(self.prefix, "lib"))
 
 
     def url_for_version(self, version):
