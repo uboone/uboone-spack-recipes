@@ -1,13 +1,6 @@
-# Copyright Spack Project Developers. See COPYRIGHT file for details.
-#
-# SPDX-License-Identifier: (Apache-2.0 OR MIT)
-
 import sys, os
-
 from spack_repo.builtin.build_systems.cmake import CMakePackage
-
 from spack.package import *
-
 from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 def sanitize(env):
@@ -58,6 +51,7 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
     depends_on("ubcv", type=("build", "link", "run"))
     depends_on("ublite", type=("build", "link", "run"))
     depends_on("uboonedata", type=("build", "run"))
+    depends_on("ubutil", type=("build", "run"))
 
     variant(
         "cxxstd",
@@ -84,7 +78,7 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
         print("Setting up uboonecode run environment.", file=sys.stderr)
         
         env.prepend_path("WIRECELL_PATH", os.path.join(self.spec['wire-cell-toolkit'].prefix, "share/wirecell"))
+        env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "scripts"))
         
         sanitize(env)
-
-

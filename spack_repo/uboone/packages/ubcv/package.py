@@ -1,11 +1,6 @@
-# Copyright Spack Project Developers. See COPYRIGHT file for details.
-#
-# SPDX-License-Identifier: (Apache-2.0 OR MIT)
-
+import sys, os
 from spack_repo.builtin.build_systems.cmake import CMakePackage
-
 from spack.package import *
-
 from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 class Ubcv(CMakePackage, FnalGithubPackage):
@@ -62,3 +57,10 @@ class Ubcv(CMakePackage, FnalGithubPackage):
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubcv/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+
+    def setup_run_environment(self, env):
+        print("Setting up ubcv run environment.", file=sys.stderr)
+
+        env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
+
+        env.prune_duplicate_paths("FHICL_FILE_PATH")

@@ -1,11 +1,6 @@
-# Copyright Spack Project Developers. See COPYRIGHT file for details.
-#
-# SPDX-License-Identifier: (Apache-2.0 OR MIT)
-
+import sys, os
 from spack_repo.builtin.build_systems.cmake import CMakePackage
-
 from spack.package import *
-
 from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 class Ublite(CMakePackage, FnalGithubPackage):
@@ -51,3 +46,10 @@ class Ublite(CMakePackage, FnalGithubPackage):
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/ublite/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+
+    def setup_run_environment(self, env):
+        print("Setting up ublite run environment.", file=sys.stderr)
+
+        env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
+
+        env.prune_duplicate_paths("FHICL_FILE_PATH")
