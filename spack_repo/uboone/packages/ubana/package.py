@@ -30,7 +30,7 @@ class Ubana(CMakePackage, FnalGithubPackage):
     depends_on("ubraw", type=("build", "link", "run"))
     depends_on("larcv", type=("build", "link", "run"))
     depends_on("larlite", type=("build", "link", "run"))
-    depends_on("fememulator", type=("build", "link", "run"))
+    depends_on("swtrigger", type=("build", "link", "run"))
     depends_on("uboonedaq-datatypes", type=("build", "link", "run"))
 
 
