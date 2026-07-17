@@ -1,5 +1,4 @@
 import sys, os
-from spack_repo.builtin.build_systems.cmake import CMakePackage
 from spack.package import *
 
 class Swtrigger(Package):
@@ -42,7 +41,7 @@ class Swtrigger(Package):
         mkdirp(os.path.join(self.stage.source_path, 'build'))
         with working_dir(os.path.join(self.stage.source_path, 'build')):
             cmake = Executable('cmake')
-            cmake('../' )
+            cmake('../')
             make()
 
 
