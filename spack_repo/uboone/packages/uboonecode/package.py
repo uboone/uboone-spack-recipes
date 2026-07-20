@@ -19,7 +19,8 @@ def sanitize(env):
         "SPACK_LOADED_HASHES",
         "XLOCALEDIR",
         "WIRECELL_PATH",
-        "FW_SEARCH_PATH"
+        "FW_SEARCH_PATH",
+        "CMAKE_PREFIX_PATH"
     ):
         env.prune_duplicate_paths(var)
 
