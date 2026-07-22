@@ -55,6 +55,11 @@ class Ubsim(CMakePackage, FnalGithubPackage):
         description="Use the specified C++ standard when building.",
     )
 
+    def patch(self):
+        filter_file("find_package\( larwirecell REQUIRED EXPORT \)",
+                "find_package( larwirecell REQUIRED EXPORT )\nfind_package( jsonnet REQUIRED EXPORT )",
+                "CMakeLists.txt" )
+
     @cmake_preset
     def cmake_args(self):
         args = [
