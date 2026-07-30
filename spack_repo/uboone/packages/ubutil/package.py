@@ -28,6 +28,7 @@ class Ubutil(CMakePackage):
     depends_on("cetlib-except", type=("build", "link", "run"))
     depends_on("fhicl-cpp", type=("build", "link", "run"))
     depends_on("python", type=("build", "link", "run"))
+    depends_on("larbatch", type=("build", "link", "run"))
 
     variant(
         "cxxstd",
