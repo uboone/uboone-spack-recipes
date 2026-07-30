@@ -13,6 +13,7 @@ class Ubsim(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.22.00", sha256="5ae06d627ac1b7f27769a26989bf03a39274dcf8e8619a77b0319e8136f4cf66")
     version("10.21.00", sha256="a14e61746188f9dca6892a9c4ce27f9d1d6af640e75dd0c2ee1f0b4c0c8e78e5") 
     version("10.20.05", sha256="07eed80f5e28b44decc30a402300a2f6af8d4328a36335ef2c89208dfc3201d3")
 

@@ -13,6 +13,7 @@ class Ubutil(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.21.02", sha256="aa53f8fc3950d3321fc100c7a59027e4f206b75fc66acbab8393bca6d6ba1e0a")
     version("10.20.07", sha256="836a1afd2536087153a9027257f4aa08d3fd0526c4f3efe061d18ab8f16244c5") 
     version("10.20.04", sha256="ea090d871168bd3dfd45f821360715c13a8ede245e40e4e390b00f7758de2db1")
 

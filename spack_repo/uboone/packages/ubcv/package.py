@@ -13,6 +13,7 @@ class Ubcv(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.22.00", sha256="5ae470ae1ccfa148242773ca10ed86ffecd73c52327ff6aa3b7674ed98de2b1f")
     version("10.21.00", sha256="afb4768beda43b2a839cef7aaa81d2aafb5db847b6968d82552e3d46819c804e") 
     version("10.20.05", sha256="eed26a67ae6586f555d47ffad2710176c844c4532c1ef5af4ca4b98a2a3f2920")
 
@@ -49,12 +50,13 @@ class Ubcv(CMakePackage, FnalGithubPackage):
         ] 
         return args
 
-    def setup_build_environment(self, env):
-        env.set("LARCV_LIBDIR", join_path(self.spec['larcv'].prefix, "build", "installed", "lib"))
-        env.set("LARLITE_LIBDIR", join_path(self.spec['larlite'].prefix, "build", "installed", "lib"))
-
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubcv/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+
+    def patch(self):
+        filter_file('NO_CACHE', 'NO_CACHE NO_DEFAULT_PATH', 'Modules/Findlarcv.cmake')
+        filter_file('NO_CACHE', 'NO_CACHE NO_DEFAULT_PATH', 'Modules/Findlarlite.cmake')
+        filter_file('NO_CACHE', 'NO_CACHE NO_DEFAULT_PATH', 'Modules/Findublarcvapp.cmake')
 
     def setup_run_environment(self, env):
         print("Setting up ubcv run environment.", file=sys.stderr)

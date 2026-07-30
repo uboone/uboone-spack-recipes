@@ -13,6 +13,7 @@ class Ubraw(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.22.00", sha256="e1b26e258d6bbd066d7a979809eb4947a8d2e08e7a47af9e5846c10d37bd8eeb")
     version("10.20.07", sha256="7969b979133d94b47bbe9a22faece6adad56b505348c714ee7d069e186b08650") 
     version("10.20.02", sha256="85647ddeedbe3ff444ca1477606d42f0823068312c05bb6126d2087202382a09")
 

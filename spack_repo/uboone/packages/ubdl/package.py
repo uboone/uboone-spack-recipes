@@ -208,6 +208,8 @@ class Ubdl(Package):
 
     def setup_run_environment(self, env):
         
+        print("Setting up ubdl run environment.", file=sys.stderr)
+
         env.set("UBDL_BASEDIR", self.prefix)
         env.set("OPENCV_INCDIR", self.spec["opencv"].prefix.include)
         opencv_lib = self.spec["opencv"].prefix.lib
@@ -222,16 +224,18 @@ class Ubdl(Package):
         # Larlite
 
         larlite_basedir = os.path.join(self.prefix, 'larlite')
+        #print('larlite_basedir = %s' % larlite_basedir, file=sys.stderr)
         env.set("LARLITE_BASEDIR", larlite_basedir)
         env.set("LARLITE_INCDIR", os.path.join(larlite_basedir, "build/installed/include"))
         env.set("LARLITE_LIBDIR", os.path.join(larlite_basedir, "build/installed/lib"))
-        env.set("LARLITE_COREDIR", os.path.join(larlite_basedir, "larlite"))
+        #env.set("LARLITE_COREDIR", os.path.join(larlite_basedir, "larlite"))
         env.prepend_path("PATH", os.path.join(larlite_basedir, "bin"))
-        #env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(larlite_basedir, "build/installed/lib/cmake/larlite"))
+        env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(larlite_basedir, "build/installed/lib/cmake/larlite"))
 
         # Geo2D
 
         geo2d_basedir = os.path.join(self.prefix, 'Geo2D')
+        #print('geo2d_basedir = %s' % geo2d_basedir, file=sys.stderr)
         env.set("GEO2D_BASEDIR", geo2d_basedir)
         env.set("GEO2D_INCDIR", geo2d_basedir)
         env.set("GEO2D_LIBDIR", os.path.join(geo2d_basedir, "lib"))
@@ -241,48 +245,52 @@ class Ubdl(Package):
         # LArOpenCV
 
         laropencv_basedir = os.path.join(self.prefix, 'LArOpenCV')
+        #print('laropencv_basedir = %s' % laropencv_basedir, file=sys.stderr)
         env.set("LAROPENCV_BASEDIR", laropencv_basedir)
         env.set("LAROPENCV_IMAGECLUSTERDIR", os.path.join(laropencv_basedir, "ImageCluster"))
 
         # Larcv
 
         larcv_basedir = os.path.join(self.prefix, 'larcv')
+        #print('larcv_basedir = %s' % larcv_basedir, file=sys.stderr)
         env.set("LARCV_BASEDIR", larcv_basedir)
         env.set("LARCV_COREDIR", os.path.join(larcv_basedir, "larcv/core"))
         env.set("LARCV_APPDIR", os.path.join(larcv_basedir, "larcv/app"))
-        env.set("LARCV_LIBDIR", os.path.join(larcv_basedir, "build/installed/lib"))
         env.set("LARCV_INCDIR", os.path.join(larcv_basedir, "build/installed/include"))
+        env.set("LARCV_LIBDIR", os.path.join(larcv_basedir, "build/installed/lib"))
         env.set("LARCV_BINDIR", os.path.join(larcv_basedir, "bin"))
         env.prepend_path("PATH", os.path.join(larcv_basedir, "bin"))
         env.prepend_path("PATH", os.path.join(larcv_basedir, "mac"))
-        #env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(larcv_basedir, "build/installed/lib/cmake/larcv"))
-        #env.prepend_path("CMAKE_PREFIX_PATH",
-        #                 "{0}/lib/python{1}/site-packages/torch".format(
-        #                     self.spec["py-torch"].prefix,
-        #                     self.spec["python"].version.up_to(2)))
-
+        env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(larcv_basedir, "build/installed/lib/cmake/larcv"))
+        env.prepend_path("CMAKE_PREFIX_PATH",
+                         "{0}/lib/python{1}/site-packages/torch".format(
+                             self.spec["py-torch"].prefix,
+                             self.spec["python"].version.up_to(2)))
+ 
         # Ublarcvapp
 
         ublarcvapp_basedir = os.path.join(self.prefix, 'ublarcvapp')
+        #print('ublarcvapp_basedir = %s' % ublarcvapp_basedir, file=sys.stderr)
         env.set("UBLARCVAPP_BASEDIR", ublarcvapp_basedir)
         env.set("UBLARCVAPP_INCDIR", os.path.join(ublarcvapp_basedir, "build/include"))
         env.set("UBLARCVAPP_LIBDIR", os.path.join(ublarcvapp_basedir, "build/lib"))
 
         env.prepend_path("PATH", os.path.join(ublarcvapp_basedir, "bin"))
-        #env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(ublarcvapp_basedir, "build/lib/cmake/ublarcvapp"))
+        env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(ublarcvapp_basedir, "build/lib/cmake/ublarcvapp"))
 
         # Larflow
 
         larflow_basedir = os.path.join(self.prefix, 'larflow')
+        #print('larflow_basedir = %s' % larflow_basedir, file=sys.stderr)
         env.set("LARFLOW_BASEDIR", larflow_basedir)
-        env.set("LARFLOW_LIBDIR", os.path.join(larflow_basedir, "build/lib"))
         env.set("LARFLOW_INCDIR", os.path.join(larflow_basedir, "build/include"))
+        env.set("LARFLOW_LIBDIR", os.path.join(larflow_basedir, "build/lib"))
 
         # Ublarcvserver
 
         env.set("UBLARCVSERVER_BASEDIR", os.path.join(self.prefix, 'ublarcvserver'))
-        env.set("UBMRCNN_DIR", os.path.join(self.prefix, 'ublarcvserver/networks/mask-rcnn.pytorch'))
-        env.set("SPARSE_INFILL_DIR", os.path.join(self.prefix, 'ublarcvserver/networks/infill'))
+        env.set("UBMRCNN_DIR", os.path.join(self.prefix, 'networks/mask-rcnn.pytorch'))
+        env.set("SPARSE_INFILL_DIR", os.path.join(self.prefix, 'networks/infill'))
 
         # Python path
 
@@ -301,12 +309,12 @@ class Ubdl(Package):
 
         # Root include path
         
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/build/installed/include"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/build/installed/include/larlite/Analysis"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/build/installed/include/larlite/Base"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/build/installed/include/larlite/BasicTool"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/build/installed/include/larlite/DataFormat"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/build/installed/include/larlite/LArUtil"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/larlite/Analysis"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/larlite/Base"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/larlite/BasicTool"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/larlite/DataFormat"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larlite/larlite/LArUtil"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "Geo2D"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "Geo2D/Geo2D/Algorithm"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "Geo2D/Geo2D/Core"))
@@ -320,29 +328,29 @@ class Ubdl(Package):
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "LArOpenCV/LArOpenCV/ImageCluster/AlgoData"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "LArOpenCV/LArOpenCV/ImageCluster/AlgoFunction"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "LArOpenCV/LArOpenCV/ImageCluster/AlgoModule"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/app/ImageMod"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/Base"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/CPPUtil"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/CVUtil"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/DataFormat"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/Processor"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/PyUtil"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/ROOTUtil"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/TorchUtil"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/build/installed/include/larcv/core/json"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/ContourTools"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/LArOpenCVHandle"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/LArliteHandler"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/LLCVProcessor"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/MCTools"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/Reco3D"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/UBImageMod"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/UBPhotonLib"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/UBWireTool"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/dbscan"))
-        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/build/include/ublarcvapp/ubdllee"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/app/ImageMod"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/Base"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/CPPUtil"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/CVUtil"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/DataFormat"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/Processor"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/PyUtil"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/ROOTUtil"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/TorchUtil"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larcv/larcv/core/json"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/ContourTools"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/LArOpenCVHandle"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/LArliteHandler"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/LLCVProcessor"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/MCTools"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/Reco3D"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/UBImageMod"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/UBPhotonLib"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/UBWireTool"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/dbscan"))
+        env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "ublarcvapp/ublarcvapp/ubdllee"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larflow/build/include"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larflow/build/include/larflow/KeyPoints"))
         env.prepend_path("ROOT_INCLUDE_PATH", os.path.join(self.prefix, "larflow/build/include/larflow/LArFlowConstants"))
