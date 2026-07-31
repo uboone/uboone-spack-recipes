@@ -30,7 +30,7 @@ class Ubsim(CMakePackage, FnalGithubPackage):
     depends_on("cetlib", type=("build", "link", "run"))
     depends_on("cetlib-except", type=("build", "link", "run"))
     depends_on("dk2nudata", type=("build", "link", "run"))
-    depends_on("geant4reweight", type=("build", "link", "run"))
+    depends_on("geant4reweight@01.21.03", type=("build", "link", "run"))
     depends_on("genie", type=("build", "link", "run"))
     depends_on("ifdh-art", type=("build", "link", "run"))
     depends_on("larcore", type=("build", "link", "run"))

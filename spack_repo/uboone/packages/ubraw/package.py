@@ -41,7 +41,7 @@ class Ubraw(CMakePackage, FnalGithubPackage):
     depends_on("root", type=("build", "link", "run"))
     depends_on("sqlite", type=("build", "link", "run"))
     depends_on("ubcore", type=("build", "link", "run"))
-    depends_on("uboonedaq-datatypes", type=("build", "link", "run"))
+    depends_on("uboonedaq-datatypes@6.22.07", type=("build", "link", "run"))
 
     variant(
         "cxxstd",

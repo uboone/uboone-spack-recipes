@@ -17,7 +17,7 @@ class Uboonedata(CMakePackage):
 
     depends_on("cmake@3.20:", type="build")
     depends_on("cetmodules", type="build")
-    depends_on("uboone-photon-propagation", type=("build", "run"))
+    depends_on("uboone-photon-propagation@01.01.00", type=("build", "run"))
 
     @cmake_preset
     def cmake_args(self):
