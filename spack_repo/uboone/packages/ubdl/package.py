@@ -25,6 +25,7 @@ class Ubdl(Package):
     depends_on("boost", type=("build", "link", "run"))
     depends_on("eigen", type=("build", "link", "run"))
     depends_on("opencv", type=("build", "link", "run"))
+    depends_on("vdt", type=("build", "link", "run"))
     depends_on("nlohmann-json", type=("build", "link", "run"))
     depends_on("py-torch", type=("build", "run"))
     depends_on("py-numpy", type=("build", "run"))
@@ -102,6 +103,7 @@ class Ubdl(Package):
         env.prepend_path("PATH", os.path.join(larcv_basedir, "bin"))
         env.prepend_path("PATH", os.path.join(larcv_basedir, "mac"))
         env.prepend_path("CMAKE_PREFIX_PATH", os.path.join(larcv_basedir, "build/installed/lib/cmake/larcv"))
+        env.prepend_path("CMAKE_PREFIX_PATH", self.spec["nlohmann-json"].prefix)
         env.prepend_path("CMAKE_PREFIX_PATH",
                          "{0}/lib/python{1}/site-packages/torch".format(
                              self.spec["py-torch"].prefix,
@@ -118,7 +120,6 @@ class Ubdl(Package):
         env.set("LARCV_PYTHON", "python")
         env.set("NLOHMANN_JSON_DIR", self.spec["nlohmann-json"].prefix)
         env.set("NLOHMANN_JSON_INC", self.spec["nlohmann-json"].prefix.include)
-
 
         # Cilantro
 
