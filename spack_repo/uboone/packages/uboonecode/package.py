@@ -82,5 +82,6 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
         env.prepend_path("WIRECELL_PATH", os.path.join(self.spec['wire-cell-toolkit'].prefix, "share/wirecell"))
         env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "scripts"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
         
         sanitize(env)

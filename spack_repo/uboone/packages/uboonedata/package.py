@@ -32,6 +32,7 @@ class Uboonedata(CMakePackage):
 
         env.prepend_path("WIRECELL_PATH", os.path.join(self.prefix, "WireCellData"))
         env.prepend_path("GXMLPATH", os.path.join(self.prefix, "genie"))
+        env.prepend_path("FW_SEARCH_PATH", self.prefix)
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "Response"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "Calibration"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "CRT"))
