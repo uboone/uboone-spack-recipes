@@ -58,6 +58,7 @@ class Ubutil(CMakePackage):
         env.prepend_path("PYTHONPATH", os.path.join(self.prefix, "bin"))
         env.prepend_path("PYTHONPATH", os.path.join(self.prefix, "python"))
         env.prepend_path("PYTHONPATH", os.path.join(self.prefix, "lib"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
         env.set("JOBSUB_GROUP", "uboone")
         env.set("GROUP", "uboone")
         env.set("SAM_EXPERIMENT", "uboone")

@@ -53,3 +53,5 @@ class Ubobj(CMakePackage, FnalGithubPackage):
 
     def setup_run_environment(self, env):
         print("Setting up ubobj run environment.", file=sys.stderr)
+
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))

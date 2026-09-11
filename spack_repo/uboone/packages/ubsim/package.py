@@ -79,5 +79,6 @@ class Ubsim(CMakePackage, FnalGithubPackage):
         print("Setting up ubsim run environment.", file=sys.stderr)
 
         env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
 
         env.prune_duplicate_paths("FHICL_FILE_PATH")

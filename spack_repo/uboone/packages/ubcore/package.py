@@ -64,6 +64,7 @@ class Ubcore(CMakePackage, FnalGithubPackage):
 
         env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "gdml"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
 
         env.prune_duplicate_paths("FHICL_FILE_PATH")
         env.prune_duplicate_paths("FW_SEARCH_PATH")
