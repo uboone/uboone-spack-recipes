@@ -13,6 +13,7 @@ class Ubreco(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.24.00", sha256="5f5c0d0a043801987052b00b82b30c5c566ec44182f1799f9494a3f88cf42dc5")
     version("10.22.00", sha256="7b25037fa94fe2dc99cdc88bdedbee1839c581927a20bcde102902102754ce49")
     version("10.21.00", sha256="eb95a6c11158a3db22195fd4cc343f59e25f767e775125129fef811616afbb2a") 
     version("10.20.05", sha256="b27408373a425582cae082ab43a1a66e343a8dc95ef188689935c002581e6366")
@@ -24,6 +25,7 @@ class Ubreco(CMakePackage, FnalGithubPackage):
     depends_on("nufinder", type="build")
     depends_on("larfinder", type="build")
 
+    depends_on("torch-scatter", type=("build", "link", "run"))
     depends_on("eigen", type=("build", "link", "run"))
     depends_on("larreco", type=("build", "link", "run"))
     depends_on("larpandora", type=("build", "link", "run"))
@@ -40,12 +42,6 @@ class Ubreco(CMakePackage, FnalGithubPackage):
     )
 
     def patch(self):
-        files = [ "ubreco/DetectorSystematics/WireModifier_module.cc",
-                "ubreco/MichelReco/Algo/PhotonFinder.cxx",
-                "ubreco/MichelReco/Fmwk/ClusterVectorCalculator.cxx",
-                "ubreco/MichelReco/Algo/ConeHitFinder.cxx"
-                ]
-        filter_file("isnan", "std::isnan", *files)
         filter_file("cet_cmake_env\(\)",
                 'cet_cmake_env()\nset(ubreco_FW_DIR, "scripts")',
                 "CMakeLists.txt")
