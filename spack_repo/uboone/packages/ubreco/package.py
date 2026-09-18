@@ -13,6 +13,7 @@ class Ubreco(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.26.00", sha256="f0e3b89c27edb19881bbc50f7636680e73ede44be3453c72014a148257b27f19")
     version("10.24.00", sha256="5f5c0d0a043801987052b00b82b30c5c566ec44182f1799f9494a3f88cf42dc5")
     version("10.22.00", sha256="7b25037fa94fe2dc99cdc88bdedbee1839c581927a20bcde102902102754ce49")
     version("10.21.00", sha256="eb95a6c11158a3db22195fd4cc343f59e25f767e775125129fef811616afbb2a") 
