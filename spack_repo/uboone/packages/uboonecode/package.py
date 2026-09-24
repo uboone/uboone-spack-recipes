@@ -47,6 +47,8 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
     depends_on("larfinder", type="build")
 
     depends_on("genie", type=("build", "link", "run"))
+    depends_on("genie-xsec", type=("build", "run"))
+    depends_on("genie-phyopt", type=("build", "run"))
     depends_on("larsoft", type=("build", "link", "run"))
     depends_on("nugen", type=("build", "link", "run"))
     depends_on("nurandom", type=("build", "link", "run"))
