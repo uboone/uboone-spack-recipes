@@ -13,6 +13,7 @@ class Ublite(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.26.00", sha256="2efdda2e80c6836842eb854c313e6d21800f7009043834184b73caa7b9edb4d0")
     version("10.24.00", sha256="d5653a7d51df34a7253ab31ff69a6e4e3a90f34a12735123902c85f66d19e884")
     version("10.22.00", sha256="56da96a1d02c90b28b9718a9e9961738e6519938aca63cde9681d618794eeb0e")
     version("10.21.00", sha256="6cf5604f77cc51258859f0e84d4e47644ba147989e13c8d557ea8b737f201943") 
