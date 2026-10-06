@@ -33,6 +33,7 @@ class Ubreco(CMakePackage, FnalGithubPackage):
     depends_on("nugen", type=("build", "link", "run"))
     depends_on("nutools", type=("build", "link", "run"))
     depends_on("ubsim", type=("build", "link", "run"))
+    depends_on("llvm", type=("build", "link", "run"))
 
     variant(
         "cxxstd",
@@ -70,6 +71,7 @@ class Ubreco(CMakePackage, FnalGithubPackage):
         env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "scripts"))
         env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(self.prefix, "lib"))
 
         env.prune_duplicate_paths("FHICL_FILE_PATH")
         env.prune_duplicate_paths("FW_SEARCH_PATH")
