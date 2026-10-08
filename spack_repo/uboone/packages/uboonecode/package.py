@@ -59,6 +59,7 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
     depends_on("ublite", type=("build", "link", "run"))
     depends_on("uboonedata", type=("build", "run"))
     depends_on("ubutil", type=("build", "run"))
+    depends_on("wire-cell-prototype", type=("build", "run"))
 
     variant(
         "cxxstd",
@@ -88,5 +89,6 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
         env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "scripts"))
         env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(self.prefix, "lib"))
         
         sanitize(env)
