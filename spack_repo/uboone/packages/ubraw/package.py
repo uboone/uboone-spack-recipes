@@ -75,5 +75,6 @@ class Ubraw(CMakePackage, FnalGithubPackage):
 
         env.prepend_path("FHICL_FILE_PATH", os.path.join(self.prefix, "job"))
         env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(self.prefix, "lib"))
 
         env.prune_duplicate_paths("FHICL_FILE_PATH")
