@@ -41,6 +41,7 @@ class Uboonedata(CMakePackage):
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "SinglePhotonAnalysis"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "searchingfornues"))
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "Eventgenerator/TwoBodyDecayGen"))
+        env.set("UBOONEDATA_DIR", self.prefix)
 
         env.prune_duplicate_paths("WIRECELL_PATH")
         env.prune_duplicate_paths("GXMLPATH")
