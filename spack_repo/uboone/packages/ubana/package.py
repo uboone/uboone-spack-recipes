@@ -13,6 +13,7 @@ class Ubana(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.32.00", sha256="0ee8cfbd1a36f8710cd05ed87a529fc2ad26cf23c4f3233446d606fe2053474c")
     version("10.27.00", sha256="5718dee18d64f8f942415311cf0220b58dfba07e8632728373ab43d43a8fd05a")
     version("10.26.00", sha256="1d9ea3c191eb9c3511ecf1306a6fcdcabb588033ff81cb735a7df2ccdf652ce6")
     version("10.24.00", sha256="f0c82c09f720f05db6856c94ac1e211b7e4401a86910b3fac027b4c0d004829a")

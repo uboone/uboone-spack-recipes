@@ -13,6 +13,7 @@ class Uboonedata(CMakePackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.32.00", sha256="1e663686cdb37e130ea0142c363e4bb6dbbef69a0e654252a0c13f4b2421fb15")
     version("10_20_04", sha256="a7593637e1dfd8b07ff3b5f62f09af31e9797b522731103b7a1ad871835c534e")
 
     depends_on("cmake@3.20:", type="build")
@@ -25,7 +26,7 @@ class Uboonedata(CMakePackage):
         return args
 
     def url_for_version(self, version):
-        return f"https://github.com/uboone/ubooonedata/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+        return f"https://github.com/uboone/uboonedata/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
 
     def setup_run_environment(self, env):
         print("Setting up uboonedata run environment.", file=sys.stderr)

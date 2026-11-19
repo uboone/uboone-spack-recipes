@@ -34,6 +34,7 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.32.00", sha256="9cc1fe8546a1971411c90cb6bb54556a453d00b253f1891ba724685671bab5e9")
     version("10.27.00", sha256="fc228d6dc4830e0ec93b082889acf907d1884581671fd491a9c269a439baebb8")
     version("10.26.00", sha256="68469a5f335a99174f9b0f2c0c4b543b7af8f850ff87bd5b2b0edbdfeb7393ff")
     version("10.24.00", sha256="5d80d69af231c1568a58694f73f97bdffe962793893e2e1256e8e358b00cb53d")

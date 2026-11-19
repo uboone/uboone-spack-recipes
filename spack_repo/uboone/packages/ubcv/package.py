@@ -13,6 +13,7 @@ class Ubcv(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("10.32.00", sha256="ab8a8c6b3016fb909cd96433eff4959e725b7ffc80dc8c0ca4980f679d842ccb")
     version("10.27.00", sha256="dc99dc0a41ca699f02a1ec5da34d3da7b81c5b361a92409bc6a2209a6f2d8beb")
     version("10.26.00", sha256="37ebddfa2883713e4010379a1cdb9ac129517633b8dd024d09ef112363f71e89")
     version("10.24.00", sha256="a3ca6d406eef8feccd6a54cf765fb4d1d50be57f09d7a0442830a999a363be83")

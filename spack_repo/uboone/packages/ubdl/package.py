@@ -33,8 +33,11 @@ class Ubdl(Package):
     depends_on("py-pyyaml", type=("build", "run"))
     depends_on("py-pyzmq", type=("build", "run"))
 
-    #def patch(self):
-    #    filter_file('setup cmake v3_27_4', '', 'buildall_fnal_py3.sh')
+    def patch(self):
+        filter_file('#include "larcv/core/DataFormat/Image2D.h"',
+                    '#include <cstdint>\n#include "larcv/core/DataFormat/Image2D.h"',
+                    'larcv/larcv/core/PyUtil/PyUtils.h')
+        
 
     def setup_build_environment(self, env):
 
