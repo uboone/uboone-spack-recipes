@@ -13,6 +13,7 @@ class Ubobj(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="d30ce727d0fbab07b49ab9a663b21b8f5057509121cfc139d84f3dde20e24718")
     version("10.30.00", sha256="38c5f5badb1a48e000f716f98830d6b4b5c6b32c0aee1470b9b84b6e50bdfc3f")
     version("10.26.00", sha256="f1d5adb4a1deea55c2343681190bb64b3d83188d4de62e96219dd9209f47300c")
     version("10.24.00", sha256="e1f3502a2a447207791cbfec6048ef82095c17c975132cb81b2e0dbfc2b25116")

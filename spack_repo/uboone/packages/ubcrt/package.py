@@ -13,6 +13,7 @@ class Ubcrt(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="57ebbe3e813b146ade447526aa87226547089641d8b72e3c239592c0c54cb7eb")
     version("10.32.00", sha256="49152cec3019537f1caa452cfadaa1be6e6821bb2f1066f1f342fc3bffecd5fe")
     version("10.27.00", sha256="050f994238a45b2253cabb6ad445aa72b48014c1bdad0f633f2892dd11bb30e1")
     version("10.26.00", sha256="259539f0ff3d7199557234daebc5e1065de51db61d1d9e1e5b69ae42d2a7e9e9")

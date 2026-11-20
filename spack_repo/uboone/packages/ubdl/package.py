@@ -32,12 +32,7 @@ class Ubdl(Package):
     depends_on("py-scipy", type=("build", "run"))
     depends_on("py-pyyaml", type=("build", "run"))
     depends_on("py-pyzmq", type=("build", "run"))
-
-    def patch(self):
-        filter_file('#include "larcv/core/DataFormat/Image2D.h"',
-                    '#include <cstdint>\n#include "larcv/core/DataFormat/Image2D.h"',
-                    'larcv/larcv/core/PyUtil/PyUtils.h')
-        
+    patch("cxx20.patch")
 
     def setup_build_environment(self, env):
 
@@ -159,6 +154,7 @@ class Ubdl(Package):
 
         # Larlite
         
+        print("Ubdl: building larlite", file=sys.stderr)
         mkdirp(os.path.join(self.stage.source_path, 'larlite/build'))
         with working_dir(os.path.join(self.stage.source_path, 'larlite/build')):
             cmake = Executable('cmake')
@@ -167,16 +163,19 @@ class Ubdl(Package):
 
         # Geo2D
             
+        print("Ubdl: building Geo2D", file=sys.stderr)
         with working_dir(os.path.join(self.stage.source_path, 'Geo2D')):
             make()
 
         # LArOpenCV
             
+        print("Ubdl: building LArOpenCV", file=sys.stderr)
         with working_dir(os.path.join(self.stage.source_path, 'LArOpenCV')):
             make()
 
         # Larcv
 
+        print("Ubdl: building larcv", file=sys.stderr)
         mkdirp(os.path.join(self.stage.source_path, 'larcv/build'))
         with working_dir(os.path.join(self.stage.source_path, 'larcv/build')):
             cmake = Executable('cmake')
@@ -185,6 +184,7 @@ class Ubdl(Package):
 
         # Cilantro
 
+        print("Ubdl: building cilantro", file=sys.stderr)
         mkdirp(os.path.join(self.stage.source_path, 'cilantro/build'))
         with working_dir(os.path.join(self.stage.source_path, 'cilantro/build')):
             cmake = Executable('cmake')
@@ -193,6 +193,7 @@ class Ubdl(Package):
 
         # Ublarcvapp
 
+        print("Ubdl: building ublarcvapp", file=sys.stderr)
         mkdirp(os.path.join(self.stage.source_path, 'ublarcvapp/build'))
         with working_dir(os.path.join(self.stage.source_path, 'ublarcvapp/build')):
             cmake = Executable('cmake')
@@ -201,6 +202,7 @@ class Ubdl(Package):
 
         # Larflow
 
+        print("Ubdl: building larflow", file=sys.stderr)
         mkdirp(os.path.join(self.stage.source_path, 'larflow/build'))
         with working_dir(os.path.join(self.stage.source_path, 'larflow/build')):
             cmake = Executable('cmake')

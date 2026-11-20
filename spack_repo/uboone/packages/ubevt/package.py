@@ -13,6 +13,7 @@ class Ubevt(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="8b7b0627b3611bbe64a5c871b724fbbb342d004b8dfd93652ff91d072c018b61")
     version("10.30.00", sha256="76a93ee208795d1cfb859419e8a92c3d092badb7a2168383236ee3c697ea1e50")
     version("10.27.00", sha256="d7f0ed4a0d6a68f6ecd51f1cba1cad23bc7f9c5e8f1bf1ef55a67c95c1975293")
     version("10.26.00", sha256="c9141017b239ba8bc23fbccbf1517acb48b1288999e5d3fd71b8b3db874e4c05")

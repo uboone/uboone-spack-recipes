@@ -13,6 +13,7 @@ class Ubcore(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="0eb0d7371c577ac6121d74abe286cea2f1d79a8194265a556fdb3933b6daa685")
     version("10.30.00", sha256="3695d6921ddcaf965e5a451bba339a5adde81d6f1eff15518c8351d6f40391ad")
     version("10.27.00", sha256="0248140eb4dc9da5653da84eb4a52365e98d0842fa50380a43c47b6d2ab28111")
     version("10.26.00", sha256="53603a51d10d6909c71cd979738f34324d008a24aa986d1894cbdcf8ea046acd")

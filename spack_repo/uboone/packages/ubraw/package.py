@@ -13,6 +13,7 @@ class Ubraw(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="59c0a91bdb3b4582f1343505228f20afb71db4211fe4616d7155b0becabf5c2a")
     version("10.30.00", sha256="3f59fa0fdbd9d6b107c53d38f5273b3a00a404214f1e98b5314145cce9481b52")
     version("10.27.00", sha256="5f0e53e89aa8a846f42ba5fc3cf6244b55b3d3829d9ea26460800d55961d7e12")
     version("10.26.00", sha256="dfae01e66bb88930946800a77aa920316cbc0b252c5d794066df5394ff1c3304")
@@ -45,7 +46,7 @@ class Ubraw(CMakePackage, FnalGithubPackage):
     depends_on("root", type=("build", "link", "run"))
     depends_on("sqlite", type=("build", "link", "run"))
     depends_on("ubcore", type=("build", "link", "run"))
-    depends_on("uboonedaq-datatypes@6.22.07", type=("build", "link", "run"))
+    depends_on("uboonedaq-datatypes", type=("build", "link", "run"))
 
     variant(
         "cxxstd",

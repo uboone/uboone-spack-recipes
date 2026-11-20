@@ -1,0 +1,80 @@
+Submodule larcv contains modified content
+diff --git a/larcv/CMakeLists.txt b/larcv/CMakeLists.txt
+index fb721132..92b967bd 100644
+--- a/larcv/CMakeLists.txt
++++ b/larcv/CMakeLists.txt
+@@ -17,7 +17,10 @@ find_package(ROOT CONFIG REQUIRED)
+ execute_process(
+     COMMAND bash "-c" "root-config --features"
+     OUTPUT_VARIABLE TEST_ROOT_CXX_STANDARD )
+-if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
++if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx20")
++  message( STATUS "using cxx20")
++  set(CMAKE_CXX_STANDARD 20)
++elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
+   message( STATUS "using cxx17")
+   set(CMAKE_CXX_STANDARD 17)
+ elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx14")
+diff --git a/larcv/larcv/core/PyUtil/PyUtils.h b/larcv/larcv/core/PyUtil/PyUtils.h
+index af7d1e12..d2038a48 100644
+--- a/larcv/larcv/core/PyUtil/PyUtils.h
++++ b/larcv/larcv/core/PyUtil/PyUtils.h
+@@ -11,6 +11,7 @@ typedef _object PyObject;
+ #endif
+ #endif
+ 
++#include <cstdint>
+ #include "larcv/core/DataFormat/Image2D.h"
+ #include "larcv/core/DataFormat/ROI.h"
+ #include "larcv/core/DataFormat/EventChStatus.h"
+Submodule larflow contains modified content
+diff --git a/larflow/CMakeLists.txt b/larflow/CMakeLists.txt
+index 81513e22..3adb2c60 100644
+--- a/larflow/CMakeLists.txt
++++ b/larflow/CMakeLists.txt
+@@ -20,7 +20,10 @@ find_package(ROOT CONFIG REQUIRED)
+ execute_process(
+     COMMAND bash "-c" "root-config --features"
+     OUTPUT_VARIABLE TEST_ROOT_CXX_STANDARD )
+-if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
++if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx20")
++  message( STATUS "using cxx20")
++  set(CMAKE_CXX_STANDARD 20)
++elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
+   message( STATUS "using cxx17")
+   set(CMAKE_CXX_STANDARD 17)
+ elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx14")
+Submodule larlite contains modified content
+diff --git a/larlite/CMakeLists.txt b/larlite/CMakeLists.txt
+index 089d7f36..22cbfd63 100644
+--- a/larlite/CMakeLists.txt
++++ b/larlite/CMakeLists.txt
+@@ -18,7 +18,10 @@ execute_process(
+     COMMAND bash "-c" "root-config --features"
+     OUTPUT_VARIABLE TEST_ROOT_CXX_STANDARD )
+ message( STATUS "Root features: ${TEST_ROOT_CXX_STANDARD}")
+-if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
++if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx20")
++  message( STATUS "using cxx20")
++  set(CMAKE_CXX_STANDARD 20)
++elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
+   message( STATUS "Using cxx17")
+   set(CMAKE_CXX_STANDARD 17)
+ elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx14")
+Submodule ublarcvapp contains modified content
+diff --git a/ublarcvapp/CMakeLists.txt b/ublarcvapp/CMakeLists.txt
+index d677cf5..0774e7e 100644
+--- a/ublarcvapp/CMakeLists.txt
++++ b/ublarcvapp/CMakeLists.txt
+@@ -18,7 +18,10 @@ find_package(ROOT CONFIG REQUIRED)
+ execute_process(
+     COMMAND bash "-c" "root-config --features"
+     OUTPUT_VARIABLE TEST_ROOT_CXX_STANDARD )
+-if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
++if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx20")
++  message( STATUS "using cxx20")
++  set(CMAKE_CXX_STANDARD 20)
++elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
+   message( STATUS "using cxx17")
+   set(CMAKE_CXX_STANDARD 17)
+ elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx14")

@@ -13,6 +13,7 @@ class Ubcv(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="a1dc7a8743d2d4c06c512d030db4725f46629304f61ac7ed6422814e3af35515")
     version("10.32.00", sha256="ab8a8c6b3016fb909cd96433eff4959e725b7ffc80dc8c0ca4980f679d842ccb")
     version("10.27.00", sha256="dc99dc0a41ca699f02a1ec5da34d3da7b81c5b361a92409bc6a2209a6f2d8beb")
     version("10.26.00", sha256="37ebddfa2883713e4010379a1cdb9ac129517633b8dd024d09ef112363f71e89")
@@ -29,7 +30,7 @@ class Ubcv(CMakePackage, FnalGithubPackage):
     depends_on("larfinder", type="build")
 
     depends_on("larevt", type=("build", "link", "run"))
-    depends_on("ubdl@2.me.06.03.prod.01", type=("build", "link", "run"))
+    depends_on("ubdl", type=("build", "link", "run"))
     depends_on("nusimdata", type=("build", "link", "run"))
     depends_on("ubevt", type=("build", "link", "run"))
     depends_on("ubreco", type=("build", "link", "run"))

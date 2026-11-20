@@ -13,6 +13,7 @@ class Ubsim(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="b80cdfee677f0c14e9c62c8637cc57c6d326e7fc67ea8d5be2b3e63668f2e6a4")
     version("10.32.00", sha256="96c7088f0b801859f47af1065be0906278b256b9612782fd6a4368e6fdac1201")
     version("10.27.00", sha256="44cd6da65ea5dd4a97af386ced7b832db606f5d82d84c150618dd38e73f5ae49")
     version("10.26.00", sha256="93291220b29bdaeae87b6bedebc2b7d93db83934684881c6c89c83fe1ea7754c")
@@ -34,7 +35,7 @@ class Ubsim(CMakePackage, FnalGithubPackage):
     depends_on("cetlib", type=("build", "link", "run"))
     depends_on("cetlib-except", type=("build", "link", "run"))
     depends_on("dk2nudata", type=("build", "link", "run"))
-    depends_on("geant4reweight@01.21.03", type=("build", "link", "run"))
+    depends_on("geant4reweight", type=("build", "link", "run"))
     depends_on("genie", type=("build", "link", "run"))
     depends_on("ifdh-art", type=("build", "link", "run"))
     depends_on("larcore", type=("build", "link", "run"))

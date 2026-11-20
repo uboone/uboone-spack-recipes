@@ -13,6 +13,7 @@ class Ubana(CMakePackage, FnalGithubPackage):
     license("Apache-2.0")
 
     version("develop", branch="develop")
+    version("11.00.00", sha256="b854599733cbc07cb07e43181fc3ddce6091135b005d915f17c597472ea30207")
     version("10.32.00", sha256="0ee8cfbd1a36f8710cd05ed87a529fc2ad26cf23c4f3233446d606fe2053474c")
     version("10.27.00", sha256="5718dee18d64f8f942415311cf0220b58dfba07e8632728373ab43d43a8fd05a")
     version("10.26.00", sha256="1d9ea3c191eb9c3511ecf1306a6fcdcabb588033ff81cb735a7df2ccdf652ce6")
@@ -33,7 +34,7 @@ class Ubana(CMakePackage, FnalGithubPackage):
     depends_on("larpandora", type=("build", "link", "run"))
     depends_on("ubcv", type=("build", "link", "run"))
     depends_on("ubraw", type=("build", "link", "run"))
-    depends_on("swtrigger@02.03.00", type=("build", "link", "run"))
+    depends_on("swtrigger", type=("build", "link", "run"))
 
 
     variant(
