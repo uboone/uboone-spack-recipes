@@ -29,7 +29,7 @@ class Ubdl(Package):
     depends_on("nlohmann-json", type=("build", "link", "run"))
     depends_on("py-torch", type=("build", "run"))
     depends_on("py-numpy", type=("build", "run"))
-    depends_on("py-scipy", type=("build", "run"))
+    #depends_on("py-scipy", type=("build", "run"))
     depends_on("py-pyyaml", type=("build", "run"))
     depends_on("py-pyzmq", type=("build", "run"))
     patch("cxx20.patch")

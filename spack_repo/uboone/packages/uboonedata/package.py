@@ -28,6 +28,26 @@ class Uboonedata(CMakePackage):
     def url_for_version(self, version):
         return f"https://github.com/uboone/uboonedata/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
 
+    def setup_build_environment(self, env):
+        print("Setting up uboonedata build environment.", file=sys.stderr)
+        prefix = Prefix(self.build_directory)
+        env.prepend_path("WIRECELL_PATH", os.path.join(prefix, "WireCellData"))
+        env.prepend_path("GXMLPATH", os.path.join(prefix, "genie"))
+        env.prepend_path("FW_SEARCH_PATH", prefix)
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "Response"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "Calibration"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "CRT"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "PandoraData"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "ppfx"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "SinglePhotonAnalysis"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "searchingfornues"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "Eventgenerator/TwoBodyDecayGen"))
+        env.set("UBOONEDATA_DIR", prefix)
+
+        env.prune_duplicate_paths("WIRECELL_PATH")
+        env.prune_duplicate_paths("GXMLPATH")
+        env.prune_duplicate_paths("FW_SEARCH_PATH")
+
     def setup_run_environment(self, env):
         print("Setting up uboonedata run environment.", file=sys.stderr)
 

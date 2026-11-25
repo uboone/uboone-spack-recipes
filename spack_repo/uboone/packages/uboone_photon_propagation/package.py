@@ -14,6 +14,13 @@ class UboonePhotonPropagation(Package):
         print("Building uboone_photon_propagation.", file=sys.stderr)
         install_tree(os.path.join(self.stage.source_path, "v01_01_00"), prefix)
 
+    def setup_build_environment(self, env):
+        print("Setting up uboone_photon_propagation build environment.", file=sys.stderr)
+        prefix = Prefix(self.build_directory)
+        env.prepend_path("FW_SEARCH_PATH", prefix)
+
+        env.prune_duplicate_paths("FW_SEARCH_PATH")
+
     def setup_run_environment(self, env):
         print("Setting up uboone_photon_propagation run environment.", file=sys.stderr)
 

@@ -63,6 +63,15 @@ class Ubcore(CMakePackage, FnalGithubPackage):
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubcore/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
 
+    def setup_build_environment(self, env):
+        print("Setting up ubcore build environment.", file=sys.stderr)
+        prefix = Prefix(self.build_directory)
+        env.prepend_path("FHICL_FILE_PATH", os.path.join(prefix, "job"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "gdml"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(prefix, "lib"))
+        env.set("UBCORE_DIR", prefix)
+
     def setup_run_environment(self, env):
         print("Setting up ubcore run environment.", file=sys.stderr)
 

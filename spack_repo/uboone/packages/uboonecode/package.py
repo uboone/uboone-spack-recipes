@@ -53,7 +53,8 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
     depends_on("genie", type=("build", "link", "run"))
     depends_on("genie-xsec", type=("build", "run"))
     depends_on("genie-phyopt", type=("build", "run"))
-    depends_on("larsoft~tensorflow", type=("build", "link", "run"))
+    #depends_on("larsoft~tensorflow", type=("build", "link", "run"))
+    depends_on("larsoft+tensorflow", type=("build", "link", "run"))
     depends_on("nugen", type=("build", "link", "run"))
     depends_on("nurandom", type=("build", "link", "run"))
     depends_on("ubcrt", type=("build", "link", "run"))
@@ -83,6 +84,19 @@ class Uboonecode(CMakePackage, FnalGithubPackage):
 
     def url_for_version(self, version):
         return f"https://github.com/uboone/uboonecode/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
+
+    def setup_build_environment(self, env):
+        print("Setting up uboonecode build environment.", file=sys.stderr)
+        prefix = Prefix(self.build_directory)
+        env.prepend_path("WIRECELL_PATH", os.path.join(self.spec['wire-cell-toolkit'].prefix, "share/wirecell"))
+        env.prepend_path("FHICL_FILE_PATH", os.path.join(prefix, "job"))
+        env.prepend_path("FHICL_FILE_PATH", '.')
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "scripts"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(prefix, "lib"))
+        env.set("UBOONECODE_DIR", prefix)
+
+        sanitize(env)
 
     def setup_run_environment(self, env):
         print("Setting up uboonecode run environment.", file=sys.stderr)

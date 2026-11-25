@@ -68,6 +68,19 @@ class Ubreco(CMakePackage, FnalGithubPackage):
     def url_for_version(self, version):
         return f"https://github.com/uboone/ubreco/archive/refs/tags/v{str(version).replace('.', '_')}.tar.gz"
 
+    def setup_build_environment(self, env):
+        print("Setting up ubreco build environment.", file=sys.stderr)
+        prefix = Prefix(self.build_directory)
+        env.prepend_path("FHICL_FILE_PATH", os.path.join(prefix, "job"))
+        env.prepend_path("FW_SEARCH_PATH", os.path.join(prefix, "scripts"))
+        env.prepend_path("CET_PLUGIN_PATH", os.path.join(prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(self.spec['llvm'].prefix, "lib"))
+        env.set("UBRECO_DIR", prefix)
+
+        env.prune_duplicate_paths("FHICL_FILE_PATH")
+        env.prune_duplicate_paths("FW_SEARCH_PATH")
+
     def setup_run_environment(self, env):
         print("Setting up ubreco run environment.", file=sys.stderr)
 
@@ -75,6 +88,7 @@ class Ubreco(CMakePackage, FnalGithubPackage):
         env.prepend_path("FW_SEARCH_PATH", os.path.join(self.prefix, "scripts"))
         env.prepend_path("CET_PLUGIN_PATH", os.path.join(self.prefix, "lib"))
         env.prepend_path("LD_LIBRARY_PATH", os.path.join(self.prefix, "lib"))
+        env.prepend_path("LD_LIBRARY_PATH", os.path.join(self.spec['llvm'].prefix, "lib"))
         env.set("UBRECO_DIR", self.prefix)
 
         env.prune_duplicate_paths("FHICL_FILE_PATH")
